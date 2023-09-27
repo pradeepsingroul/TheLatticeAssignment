@@ -29,10 +29,14 @@ public class PatientServiceIMPL implements PatientServices {
 
 	@Override
 	public Patient register(Patient patient) throws PatientExceptions {
-		Optional<Patient> opt = pDao.findByEmail(patient.getEmail());
-		if (opt.isPresent()) {
+		Optional<Patient> mailCheck = pDao.findByEmail(patient.getEmail());
+		Optional<Patient> phoneCheck = pDao.findByPhoneNo(patient.getPhoneNo());
+		if (mailCheck.isPresent()) {
 			throw new PatientExceptions("patient already exist with the mail:" + patient.getEmail());
-		} else {
+		}else if(phoneCheck.isPresent()) {
+			throw new PatientExceptions("patient already exist with the phone number: " + patient.getPhoneNo());
+		}
+		else {
 			return pDao.save(patient);
 //			return d1;/
 		}

@@ -9,9 +9,12 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.health.Entities.Doctor;
+import com.health.Entities.Patient;
 
 @Repository
 public interface DoctorDAO extends JpaRepository<Doctor, Integer>{
+	
+	Optional<Doctor> findByPhoneNo(String phoneNo);
 	
 	Optional<Doctor> findByEmail(String email);
 	

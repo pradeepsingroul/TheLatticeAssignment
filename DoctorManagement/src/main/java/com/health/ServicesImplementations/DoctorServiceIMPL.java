@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 
 import com.health.DTO.LoginDTO;
 import com.health.Entities.Doctor;
+import com.health.Entities.Patient;
 import com.health.Exceptions.DoctorExceptions;
+import com.health.Exceptions.PatientExceptions;
 import com.health.Repository.DoctorDAO;
 import com.health.Services.DoctorServices;
 
@@ -20,8 +22,12 @@ public class DoctorServiceIMPL implements DoctorServices{
 	
 	@Override
 	public Doctor register(Doctor doctor) throws DoctorExceptions {
-		Optional<Doctor> opt = dDao.findByEmail(doctor.getEmail());
-		if(opt.isPresent()) {
+		Optional<Doctor> mailCheck = dDao.findByEmail(doctor.getEmail());
+		Optional<Doctor> phoneCheck = dDao.findByPhoneNo(doctor.getPhoneNo());
+		if(phoneCheck.isPresent()) {
+			throw new PatientExceptions("patient already exist with the phone number: " + doctor.getPhoneNo());
+		}
+		else if(mailCheck.isPresent()) {
 			throw new DoctorExceptions("doctor already exist with the mail:"+doctor.getEmail());
 		}else {
 			return dDao.save(doctor);

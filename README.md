@@ -1,5 +1,5 @@
-#Task
-``
+# Task
+```
 The Task
 
 We have a platform where doctors can register their patients through a mobile or web portal. For this to work we need to build backend APIs to achieve task like:
@@ -48,7 +48,7 @@ Important Note: This suggesting doctor API  is the evaluating API where the logi
 
 Edge-Case 1: If there isn’t any doctor on that location (i.e. outside Delhi, Noida, Faridabad), the response should be “We are still waiting to expand to your location”
 
-Edge-Case 2: If there isn’t any doctor for that symptom on that location, the response should be “There isn’t any doctor present at your location for your symptom”``
+Edge-Case 2: If there isn’t any doctor for that symptom on that location, the response should be “There isn’t any doctor present at your location for your symptom”```
 
 # TheLatticeAssignment
 This is a platform where we can mange the doctors and the patients. features: create doctor | login doctor | Get Doctor by email | Delete doctor by Email | Get all Doctors || create Patient | Login Patient | Get By Email | Delete by Email | Get all Patients | Get the suggestions for patient

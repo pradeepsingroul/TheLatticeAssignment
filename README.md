@@ -57,3 +57,65 @@ This is a platform where we can mange the doctors and the patients. features: cr
 ![Patient Entity](https://github.com/pradeepsingroul/TheLatticeAssignment/assets/104360276/94976d1e-0b63-4d23-a2b0-cbf58a8696e3)
 ![loginDto](https://github.com/pradeepsingroul/TheLatticeAssignment/assets/104360276/a5f34aa6-b811-4727-ab38-e57d30dc3f5c)
 ![DoctorManagement](https://github.com/pradeepsingroul/TheLatticeAssignment/assets/104360276/ba4dd39c-6bcd-4f27-b035-2a1bccfa81fb)
+
+## Features
+- Register Doctor
+- Login Doctor
+- Get Doctor by Email
+- Get All Doctors
+- Delete Doctors By Email
+- Register Patient
+- Login Patient
+- Get Patient by Email
+- Get All Patient
+- Delete Patient By Email
+- Get Suggessions for specific location and symtoms
+
+## Tech Stack
+- Core Java
+- Spring Boot
+- Hibernate
+- MySQL (RDBMS)
+- Sql
+- Maven
+- Swagger UI
+- postman
+- Intellij Idea
+- Giuhub
+## Deployment
+
+To deploy this project on localhost paste this below code in application.properties file in the 
+resources and update according to your database name, username and password of your MySQL database.
+
+```properties
+ #changing the server port
+server.port=8080
+
+#db specific properties
+spring.datasource.url=jdbc:mysql://localhost:3306/database
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.datasource.username=username
+spring.datasource.password=password
+
+
+
+#ORM s/w specific properties
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+
+spring.mvc.throw-exception-if-no-handler-found=true
+spring.web.resources.add-mappings=false
+
+spring.mvc.pathmatch.matching-strategy = ANT_PATH_MATCHER
+```
+
+### Swagger UI - Link
+
+Use this link to run it on browser.
+```swagger
+http://localhost:8080/swagger-ui/index.html
+```
+
+## Authors
+
+- [Pradeep Singroul (@pradeepsingroul) ](https://github.com/pradeepsingroul)

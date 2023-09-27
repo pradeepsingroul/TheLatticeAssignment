@@ -61,5 +61,12 @@ public class PatientController {
 		return new ResponseEntity<Patient>(pt,HttpStatus.OK);
 		
 	}
+	
+	@GetMapping("/suggessions/{email}")
+	public ResponseEntity<List<Doctor>> getSugeessionsHandler(@Valid @RequestParam String email){
+		List<Doctor> pt = pService.getSuggessioins(email);
+		return new ResponseEntity<List<Doctor>>(pt,HttpStatus.OK);
+		
+	}
 
 }

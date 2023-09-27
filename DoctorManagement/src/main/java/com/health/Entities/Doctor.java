@@ -10,6 +10,8 @@ import com.health.Enums.Speciality;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Max;
@@ -31,7 +33,8 @@ import lombok.Setter;
 public class Doctor {
 	
 	@Id
-	private Integer id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer doctorId;
 
 	@Length(min = 3,message = "should be at least 3 characters")
 	@Pattern(regexp = "^[a-zA-Z\\s]+$",message = "Name must not contain any numbers and special char")

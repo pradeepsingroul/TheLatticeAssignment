@@ -15,12 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.health.DTO.LoginDTO;
 import com.health.Entities.Doctor;
-import com.health.Servicea.DoctorServices;
+import com.health.Services.DoctorServices;
 
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/health")
+@RequestMapping("/health/doctors")
 public class DoctorController {
 	
 	@Autowired

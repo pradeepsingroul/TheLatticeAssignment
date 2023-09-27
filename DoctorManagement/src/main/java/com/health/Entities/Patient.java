@@ -1,10 +1,16 @@
 package com.health.Entities;
 
+import org.hibernate.validator.constraints.Length;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 import com.health.Enums.Symtoms;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Max;
@@ -25,10 +31,11 @@ import lombok.Setter;
 public class Patient {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer PatientId;
 	
-	@Min(value = 3,message = "should be at least 3 characters")
-	@Pattern(regexp="^[A-Za-z-' ]+$",message = "Name must contains only alphabates")
+	@Length(min = 3,message = "should be at least 3 characters")
+	@Pattern(regexp = "^[a-zA-Z\\s]+$",message = "Name must not contain any numbers and special char")
 	private String name;
 	
 	@Max(value = 20,message = "should be at max 20 characters")
@@ -40,11 +47,10 @@ public class Patient {
 	@JsonProperty(access = Access.WRITE_ONLY)
 	private String password;
 	
-	@Max(value = 10,message = "should be at least 10 number")
-	@Min(value = 10,message = "should be at least 10 number")
-	@Pattern(regexp = "^\\d{10}$",message = "should be at least 10 number")
-	private Integer phoneNo;
+	@Pattern(regexp = "\\d{10}",message = "Phone number must contains 10 digit")
+	private String phoneNo;
 	
+	@Enumerated(EnumType.STRING)
 	private Symtoms symtomes;
 
 }

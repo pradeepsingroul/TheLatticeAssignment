@@ -38,7 +38,7 @@ public class Patient {
 	@Pattern(regexp = "^[a-zA-Z\\s]+$",message = "Name must not contain any numbers and special char")
 	private String name;
 	
-	@Max(value = 20,message = "should be at max 20 characters")
+	@Length(max = 20,message = "should be at max 20 characters")
 	private String city;
 	
 	@Email(message = "Invalid email id")

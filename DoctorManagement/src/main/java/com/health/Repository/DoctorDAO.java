@@ -10,8 +10,8 @@ import com.health.Entities.Doctor;
 @Repository
 public interface DoctorDAO extends JpaRepository<Doctor, Integer>{
 	
-	Optional<Doctor> findbyEmail(String email);
+	Optional<Doctor> findByEmail(String email);
 
-	Optional<Doctor> findbyEmailAndPassword(String email,String password);
+	Optional<Doctor> findByEmailAndPassword(String email,String password);
 
 }

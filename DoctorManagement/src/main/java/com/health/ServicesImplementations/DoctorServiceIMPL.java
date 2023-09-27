@@ -25,7 +25,7 @@ public class DoctorServiceIMPL implements DoctorServices{
 		Optional<Doctor> mailCheck = dDao.findByEmail(doctor.getEmail());
 		Optional<Doctor> phoneCheck = dDao.findByPhoneNo(doctor.getPhoneNo());
 		if(phoneCheck.isPresent()) {
-			throw new PatientExceptions("patient already exist with the phone number: " + doctor.getPhoneNo());
+			throw new PatientExceptions("doctor already exist with the phone number: " + doctor.getPhoneNo());
 		}
 		else if(mailCheck.isPresent()) {
 			throw new DoctorExceptions("doctor already exist with the mail:"+doctor.getEmail());

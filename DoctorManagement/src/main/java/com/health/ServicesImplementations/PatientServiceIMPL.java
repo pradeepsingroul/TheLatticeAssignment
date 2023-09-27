@@ -47,7 +47,7 @@ public class PatientServiceIMPL implements PatientServices {
 		Optional<Patient> opt = pDao.findByEmailAndPassword(Logindto.getEmail(), Logindto.getPassword());
 		if (opt.isEmpty()) {
 			throw new PatientExceptions(
-					"patient does not exist with the email:" + Logindto.getEmail() + " please registe first");
+					"patient does not exist with the email:" + Logindto.getEmail() + "or you have enter somethink wrong details");
 		} else {
 			return opt.get();
 		}

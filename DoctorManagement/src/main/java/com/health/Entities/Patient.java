@@ -2,8 +2,7 @@ package com.health.Entities;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
-import com.health.Enums.City;
-import com.health.Enums.Speciality;
+import com.health.Enums.Symtoms;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -23,17 +22,17 @@ import lombok.Setter;
 @Getter
 @Setter
 @Data
-public class Doctor {
+public class Patient {
 	
 	@Id
-	private Integer id;
+	private Integer PatientId;
 	
 	@Min(value = 3,message = "should be at least 3 characters")
 	@Pattern(regexp="^[A-Za-z-' ]+$",message = "Name must contains only alphabates")
 	private String name;
 	
 	@Max(value = 20,message = "should be at max 20 characters")
-	private City city;
+	private String city;
 	
 	@Email(message = "Invalid email id")
 	private String email;
@@ -43,8 +42,9 @@ public class Doctor {
 	
 	@Max(value = 10,message = "should be at least 10 number")
 	@Min(value = 10,message = "should be at least 10 number")
-	private String phoneNo;
+	@Pattern(regexp = "^\\d{10}$",message = "should be at least 10 number")
+	private Integer phoneNo;
 	
-	private Speciality speciality;
+	private Symtoms symtomes;
 
 }

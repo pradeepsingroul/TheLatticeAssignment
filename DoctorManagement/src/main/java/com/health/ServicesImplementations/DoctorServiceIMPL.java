@@ -1,4 +1,4 @@
-package com.health.ServiceImplementations;
+package com.health.ServicesImplementations;
 
 import java.util.List;
 import java.util.Optional;
@@ -10,7 +10,7 @@ import com.health.DTO.LoginDTO;
 import com.health.Entities.Doctor;
 import com.health.Exceptions.DoctorExceptions;
 import com.health.Repository.DoctorDAO;
-import com.health.Servicea.DoctorServices;
+import com.health.Services.DoctorServices;
 
 @Service
 public class DoctorServiceIMPL implements DoctorServices{

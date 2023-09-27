@@ -20,4 +20,6 @@ public interface PatientServices {
 	List<Patient> getAllPatient() throws PatientExceptions;
 	
 	Patient deleteByEmail(String email) throws PatientExceptions;
+	
+	List<Doctor> getSuggessioins(String email) throws DoctorExceptions,PatientExceptions;
 }

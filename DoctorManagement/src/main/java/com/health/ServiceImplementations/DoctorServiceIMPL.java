@@ -1,5 +1,6 @@
 package com.health.ServiceImplementations;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,20 +20,19 @@ public class DoctorServiceIMPL implements DoctorServices{
 	
 	@Override
 	public Doctor register(Doctor doctor) throws DoctorExceptions {
-		Optional<Doctor> opt = dDao.findbyEmail(doctor.getEmail());
+		Optional<Doctor> opt = dDao.findByEmail(doctor.getEmail());
 		if(opt.isPresent()) {
 			throw new DoctorExceptions("doctor already exist with the mail:"+doctor.getEmail());
 		}else {
-			Doctor d1 = opt.get();
-			dDao.save(doctor);
-			return d1;
+			return dDao.save(doctor);
+//			return d1;/
 		}
 	}
 
 	@Override
 	public Doctor login(LoginDTO Logindto) throws DoctorExceptions {
 		
-		Optional<Doctor> opt = dDao.findbyEmailAndPassword(Logindto.getEmail(),Logindto.getPassword());
+		Optional<Doctor> opt = dDao.findByEmailAndPassword(Logindto.getEmail(),Logindto.getPassword());
 		if(opt.isEmpty()) {
 			throw new DoctorExceptions("Doctor does not exist with the email:"+Logindto.getEmail()+ " please registe first");
 		}else {
@@ -41,6 +41,37 @@ public class DoctorServiceIMPL implements DoctorServices{
 		
 		
 		
+	}
+
+	@Override
+	public Doctor getDoctorEmail(String email) throws DoctorExceptions {
+		Optional<Doctor> opt = dDao.findByEmail(email);
+		if(opt.isEmpty()) {
+			throw new DoctorExceptions("Doctor does not exist with the email:"+email);
+		}else {
+			return opt.get();
+		}
+	}
+
+	@Override
+	public List<Doctor> getAllDoctors() throws DoctorExceptions {
+		List<Doctor> doctors = dDao.findAll();
+		if(doctors.isEmpty()) {
+			throw new DoctorExceptions("Doctor does not exsit...");
+		}
+		return doctors;
+	}
+
+	@Override
+	public Doctor deleteByEmail(String email) throws DoctorExceptions {
+		Optional<Doctor> opt = dDao.findByEmail(email);
+		if(opt.isEmpty()) {
+			throw new DoctorExceptions("Doctor does not exist with the email: "+email);
+		}else {
+			Doctor d1 = opt.get();
+			dDao.delete(d1);
+			return d1;
+		}
 	}
 
 }
